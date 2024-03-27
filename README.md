@@ -3,6 +3,8 @@ README
 ###  registro   
 POST localhost:6060/auth/signup
 
+POST localhost:6060/auth/signin
+
 ```json
 {
     "name": "jonnyjaimes",
@@ -11,13 +13,10 @@ POST localhost:6060/auth/signup
     "role": "USER",
     "codigoUniversidad": "1151743"
 }
-```json
 
-POST localhost:6060/auth/signin
-```json
+
 {
     "email": "jonnyjaimes@ufps.co",
     "password": "ufps2023"
 }
-```json
 
