@@ -13,6 +13,13 @@ POST localhost:6060/auth/signin
     "role": "USER",
     "codigoUniversidad": "1151743"
 }
+{
+    "name": "pardo",
+    "email": "pardo@ufps.co",
+    "password": "1234",
+    "role": "ADMIN",
+    "codigoUniversidad": "1151743"
+}
 
 
 {
