@@ -10,32 +10,32 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import BackendSiadseUfps.siadse.dto.ReqRes;
-import BackendSiadseUfps.siadse.entity.Product;
-import BackendSiadseUfps.siadse.repository.ProductRepo;
+import BackendSiadseUfps.siadse.entity.Semillero;
+import BackendSiadseUfps.siadse.repository.SemilleroRepo;
 
 
 @RestController
 public class AdminUsers {
 
     @Autowired
-    private ProductRepo productRepo;
+    private SemilleroRepo semilleroRepo;
 
-    @GetMapping("/public/product")
+    @GetMapping("/public/semilleros")
     public ResponseEntity<Object> getAllProducts(){
-        return ResponseEntity.ok(productRepo.findAll());
+        return ResponseEntity.ok(semilleroRepo.findAll());
     }
 
-    @PostMapping("/admin/saveproduct")
+    @PostMapping("/admin/guardarsemillero")
     public ResponseEntity<Object> signUp(@RequestBody ReqRes productRequest){
-        Product productToSave = new Product();
+        Semillero productToSave = new Semillero();
         productToSave.setName(productRequest.getName());
-        return ResponseEntity.ok(productRepo.save(productToSave));
+        return ResponseEntity.ok(semilleroRepo.save(productToSave));
     }
 
 
     @GetMapping("/user/alone")
     public ResponseEntity<Object> userAlone(){
-        return ResponseEntity.ok("USers alone can access this ApI only");
+        return ResponseEntity.ok("Solo los usuarios pueden acceder a esta API solo.");
     }
 
     @GetMapping("/adminuser/both")

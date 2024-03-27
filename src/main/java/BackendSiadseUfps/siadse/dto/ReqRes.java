@@ -6,7 +6,8 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 
 import BackendSiadseUfps.siadse.entity.OurUsers;
-import BackendSiadseUfps.siadse.entity.Product;
+
+import BackendSiadseUfps.siadse.entity.Semillero;
 import lombok.Data;
 
 @Data
@@ -24,6 +25,7 @@ public class ReqRes {
     private String email;
     private String role;
     private String password;
-    private List<Product> products;
+    private String codigoUniversidad;
+    private List<Semillero> products;
     private OurUsers ourUsers;
 }

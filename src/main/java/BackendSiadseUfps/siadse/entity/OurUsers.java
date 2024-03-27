@@ -13,8 +13,10 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import lombok.Data;
+import lombok.Getter;
 
 @Data
+@Getter
 @Entity
 @Table(name = "ourusers")
 public class OurUsers implements UserDetails {
@@ -25,6 +27,10 @@ public class OurUsers implements UserDetails {
     private String email;
     private String password;
     private String role;
+    private String codigoUniversidad;
+    
+    
+    
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return List.of(new SimpleGrantedAuthority(role));
