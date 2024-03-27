@@ -11,15 +11,24 @@ POST localhost:6060/auth/signin
     "email": "jonnyjaimes@ufps.co",
     "password": "ufps2023",
     "role": "USER",
-    "codigoUniversidad": "1151743"
+    "codigoUniversidad": "1151743",
+    "semestreActual":10,
+    "edad": 23,
+    "direccionResidencia":"cucuta calle 2",
+    "celular":"3133713137"
 }
 {
-    "name": "pardo",
-    "email": "pardo@ufps.co",
-    "password": "1234",
-    "role": "ADMIN",
-    "codigoUniversidad": "1151743"
+    "name": "jonnyadmin",
+    "email": "admin@ufps.co",
+    "password": "ufps2023",
+    "role": "Admin",
+    "codigoUniversidad": "1151743",
+    "semestreActual":10,
+    "edad": 23,
+    "direccionResidencia":"cucuta calle 2",
+    "celular":"3133713137"
 }
+
 
 
 {
