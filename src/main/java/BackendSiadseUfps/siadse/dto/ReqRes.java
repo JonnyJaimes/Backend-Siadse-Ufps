@@ -26,6 +26,10 @@ public class ReqRes {
     private String role;
     private String password;
     private String codigoUniversidad;
-    private List<Semillero> products;
+    private Integer semestreActual;
+    private Integer edad;
+    private String direccionResidencia;
+    private String celular;
+    private List<Semillero> semillero;
     private OurUsers ourUsers;
 }

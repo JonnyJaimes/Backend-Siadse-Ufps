@@ -32,6 +32,10 @@ public class AuthService {
 			ourUsers.setPassword(passwordEncoder.encode(registrationRequest.getPassword()));
 			ourUsers.setRole(registrationRequest.getRole());
 			ourUsers.setCodigoUniversidad(registrationRequest.getCodigoUniversidad());
+			ourUsers.setSemestreActual(registrationRequest.getSemestreActual());
+			ourUsers.setEdad(registrationRequest.getEdad());
+			ourUsers.setDireccionResidencia(registrationRequest.getDireccionResidencia());
+			ourUsers.setCelular(registrationRequest.getCelular());
 			OurUsers ourUserResult = ourUserRepo.save(ourUsers);
 			if (ourUserResult != null && ourUserResult.getId() > 0) {
 				resp.setOurUsers(ourUserResult);
