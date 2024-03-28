@@ -21,6 +21,10 @@ public class AuthController {
     public ResponseEntity<ReqRes> signUp(@RequestBody ReqRes signUpRequest){
         return ResponseEntity.ok(authService.signUp(signUpRequest));
     }
+    @PostMapping("/signupdirector")
+    public ResponseEntity<ReqRes> signUpDirector(@RequestBody ReqRes signUpRequest){
+        return ResponseEntity.ok(authService.signUp(signUpRequest));
+    }
     @PostMapping("/signin")
     public ResponseEntity<ReqRes> signIn(@RequestBody ReqRes signInRequest){
         return ResponseEntity.ok(authService.signIn(signInRequest));

@@ -30,6 +30,8 @@ public class ReqRes {
     private Integer edad;
     private String direccionResidencia;
     private String celular;
+    private boolean directorSemilleros;
     private List<Semillero> semillero;
     private OurUsers ourUsers;
+    
 }

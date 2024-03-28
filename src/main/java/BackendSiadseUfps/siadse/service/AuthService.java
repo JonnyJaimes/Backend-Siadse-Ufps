@@ -49,6 +49,43 @@ public class AuthService {
 		return resp;
 	}
 
+	public ReqRes signUpDirector(ReqRes registrationRequest) {
+		ReqRes resp = new ReqRes();
+		try {
+			OurUsers ourUsers = new OurUsers();
+			ourUsers.setEmail(registrationRequest.getEmail());
+			ourUsers.setPassword(passwordEncoder.encode(registrationRequest.getPassword()));
+
+			// Establecer el rol basado en la solicitud de registro
+			String role = registrationRequest.getRole();
+			ourUsers.setRole(role);
+
+			// Si el rol es "DIRECTOR_SEMILLERO", establecer el campo adicional
+			if (role.equals("DIRECTOR_SEMILLERO")) {
+				ourUsers.setDirectorSemilleros(true);
+			} else {
+				ourUsers.setDirectorSemilleros(false);
+			}
+
+			// Establecer otros campos
+			ourUsers.setCodigoUniversidad(registrationRequest.getCodigoUniversidad());
+			ourUsers.setEdad(registrationRequest.getEdad());
+			ourUsers.setDireccionResidencia(registrationRequest.getDireccionResidencia());
+			ourUsers.setCelular(registrationRequest.getCelular());
+
+			OurUsers ourUserResult = ourUserRepo.save(ourUsers);
+			if (ourUserResult != null && ourUserResult.getId() > 0) {
+				resp.setOurUsers(ourUserResult);
+				resp.setMessage("Usuario guardado satisfactoriamente");
+				resp.setStatusCode(200);
+			}
+		} catch (Exception e) {
+			resp.setStatusCode(500);
+			resp.setError(e.getMessage());
+		}
+		return resp;
+	}
+
 	public ReqRes signIn(ReqRes signinRequest) {
 		ReqRes response = new ReqRes();
 

@@ -1,5 +1,6 @@
 package BackendSiadseUfps.siadse.entity;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
@@ -56,14 +57,22 @@ public class OurUsers implements UserDetails {
     @NotNull(message = "celular cannot be null")
     @Size(min = 1, max = 15)
     private String celular;
-
+     
+    private boolean directorSemilleros;
     
     
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return List.of(new SimpleGrantedAuthority(role));
+        List<GrantedAuthority> authorities = new ArrayList<>();
+        authorities.add(new SimpleGrantedAuthority(role));
+        
+        // Si el usuario es director de semilleros, agregamos el rol correspondiente
+        if (directorSemilleros) {
+            authorities.add(new SimpleGrantedAuthority("ROLE_DIRECTOR_SEMILLEROS"));
+        }
+        
+        return authorities;
     }
-
 
     @Override
     public String getUsername() {
