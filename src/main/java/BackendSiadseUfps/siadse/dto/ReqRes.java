@@ -5,7 +5,7 @@ import java.util.List;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 
-import BackendSiadseUfps.siadse.entity.OurUsers;
+import BackendSiadseUfps.siadse.entity.Usuarios;
 
 import BackendSiadseUfps.siadse.entity.Semillero;
 import lombok.Data;
@@ -32,6 +32,6 @@ public class ReqRes {
     private String celular;
    
     private List<Semillero> semillero;
-    private OurUsers ourUsers;
+    private Usuarios usuarios;
     
 }

@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
 import BackendSiadseUfps.siadse.service.JWTUtils;
-import BackendSiadseUfps.siadse.service.OurUserDetailsService;
+import BackendSiadseUfps.siadse.service.UsuariosDetailsService;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -24,7 +24,7 @@ public class JWTAuthFIlter extends OncePerRequestFilter {
     @Autowired
     private JWTUtils jwtUtils;
     @Autowired
-    private OurUserDetailsService ourUserDetailsService;
+    private UsuariosDetailsService ourUserDetailsService;
 
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {

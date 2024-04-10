@@ -20,7 +20,7 @@ public class Semillero {
     private Integer id_lider;
     private Integer lineaInvestigacion;
     private String descripcion;
-    private String Logo;
+    private String imagen="no-image.png";
     
     
 }

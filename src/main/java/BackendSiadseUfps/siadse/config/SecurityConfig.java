@@ -17,14 +17,14 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
-import BackendSiadseUfps.siadse.service.OurUserDetailsService;
+import BackendSiadseUfps.siadse.service.UsuariosDetailsService;
 
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig {
 
     @Autowired
-    private OurUserDetailsService ourUserDetailsService;
+    private UsuariosDetailsService ourUserDetailsService;
     @Autowired
     private JWTAuthFIlter jwtAuthFIlter;
 

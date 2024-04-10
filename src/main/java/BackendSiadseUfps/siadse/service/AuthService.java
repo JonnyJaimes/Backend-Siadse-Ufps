@@ -9,14 +9,14 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import BackendSiadseUfps.siadse.dto.ReqRes;
-import BackendSiadseUfps.siadse.entity.OurUsers;
-import BackendSiadseUfps.siadse.repository.OurUserRepo;
+import BackendSiadseUfps.siadse.entity.Usuarios;
+import BackendSiadseUfps.siadse.repository.UsuariosRepo;
 
 @Service
 public class AuthService {
 
 	@Autowired
-	private OurUserRepo ourUserRepo;
+	private UsuariosRepo usuariosRepo;
 	@Autowired
 	private JWTUtils jwtUtils;
 	@Autowired
@@ -27,18 +27,18 @@ public class AuthService {
 	public ReqRes signUp(ReqRes registrationRequest) {
 		ReqRes resp = new ReqRes();
 		try {
-			OurUsers ourUsers = new OurUsers();
+			Usuarios ourUsers = new Usuarios();
 			ourUsers.setEmail(registrationRequest.getEmail());
 			ourUsers.setPassword(passwordEncoder.encode(registrationRequest.getPassword()));
 			ourUsers.setRole(registrationRequest.getRole());
-			ourUsers.setCodigoUniversidad(registrationRequest.getCodigoUniversidad());
+			ourUsers.setCodigo(registrationRequest.getCodigoUniversidad());
 			ourUsers.setSemestreActual(registrationRequest.getSemestreActual());
 			ourUsers.setEdad(registrationRequest.getEdad());
 			ourUsers.setDireccionResidencia(registrationRequest.getDireccionResidencia());
 			ourUsers.setCelular(registrationRequest.getCelular());
-			OurUsers ourUserResult = ourUserRepo.save(ourUsers);
-			if (ourUserResult != null && ourUserResult.getId() > 0) {
-				resp.setOurUsers(ourUserResult);
+			Usuarios ourUserResult =usuariosRepo.save(ourUsers);
+			if (ourUserResult != null && ourUserResult.getId_usuario() > 0) {
+				resp.setUsuarios(ourUserResult);
 				resp.setMessage("Usuario guardado satisfatoriamente");
 				resp.setStatusCode(200);
 			}
@@ -48,6 +48,8 @@ public class AuthService {
 		}
 		return resp;
 	}
+	
+	
 
 	
 
@@ -57,7 +59,7 @@ public class AuthService {
 		try {
 			authenticationManager.authenticate(
 					new UsernamePasswordAuthenticationToken(signinRequest.getEmail(), signinRequest.getPassword()));
-			var user = ourUserRepo.findByEmail(signinRequest.getEmail()).orElseThrow();
+			var user =usuariosRepo.findByEmail(signinRequest.getEmail()).orElseThrow();
 			System.out.println("USER IS: " + user);
 			var jwt = jwtUtils.generateToken(user);
 			var refreshToken = jwtUtils.generateRefreshToken(new HashMap<>(), user);
@@ -76,7 +78,7 @@ public class AuthService {
 	public ReqRes refreshToken(ReqRes refreshTokenReqiest) {
 		ReqRes response = new ReqRes();
 		String ourEmail = jwtUtils.extractUsername(refreshTokenReqiest.getToken());
-		OurUsers users = ourUserRepo.findByEmail(ourEmail).orElseThrow();
+		Usuarios users =usuariosRepo.findByEmail(ourEmail).orElseThrow();
 		if (jwtUtils.isTokenValid(refreshTokenReqiest.getToken(), users)) {
 			var jwt = jwtUtils.generateToken(users);
 			response.setStatusCode(200);
